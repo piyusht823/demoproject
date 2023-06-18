@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/v4-shims.min.css" integrity="sha512-p++g4gkFY8DBqLItjIfuKJPFvTPqcg2FzOns2BNaltwoCOrXMqRIOqgWqWEvuqsj/3aVdgoEo2Y7X6SomTfUPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,200&display=swap"
+      rel="stylesheet">
+    <!-- for icon link font cdn 4.7.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Website</title>
+
+    <script>
+        function toggleForm() {
+          var loginForm = document.getElementById("login-form");
+          var signupForm = document.getElementById("signup-form");
+          var toggleBtn = document.getElementById("toggle-btn");
+    
+          if (loginForm.style.display === "none") {
+            loginForm.style.display = "block";
+            signupForm.style.display = "none";
+            toggleBtn.textContent = "Don't have an account? Sign Up";
+          } else {
+            loginForm.style.display = "none";
+            signupForm.style.display = "block";
+            toggleBtn.textContent = "Already have an account? Log In";
+          }
+        }
+      </script>
+      <script>
+        function signupf(){
+            var signupForm = document.getElementById("signup-form");
+            var loginForm = document.getElementById("login-form");
+            var toggleBtn = document.getElementById("toggle-btn");
+            signupForm.style.display = "block";
+            loginForm.style.display = "none";
+            toggleBtn.textContent = "Already have an account? Log In";
+        }
+        function loginf(){
+            var signupForm = document.getElementById("signup-form");
+            var loginForm = document.getElementById("login-form");
+            var toggleBtn = document.getElementById("toggle-btn");
+            signupForm.style.display = "none";
+            loginForm.style.display = "block";
+            toggleBtn.textContent = "Don't have an account? Sign Up";
+        }
+      </script>
+</head>
+<body>
+    <div class="header" id="topheader">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+          <div class="container text-uppercase p-2">
+    
+            <a class="navbar-brand font-weight-bold text-white" href="#">Cyphon-Tech</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto text-uppercase">
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#signup-form" onclick="signupf()">SignUp</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#login-form" onclick="loginf()">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#aboutus">About Us</a>
+                </li>
+            </div>
+          </div>
+        </nav>
+        
+
+    </div>
+
+
+            <!-- Section for login -->
+            <div class="login-container" id="login-form">
+                <h2>Login</h2>
+                <form>
+                  <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="login-email" name="login-email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="login-password" name="login-password" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Login">
+                  </div>
+                </form>
+                <div class="toggle-btn" id="toggle-btn" onclick="toggleForm()">
+                  Don't have an account? Sign Up
+                </div>
+              </div>
+            
+              <div class="signup-container" id="signup-form" style="display: none;">
+                <h2>Sign Up</h2>
+                <form>
+                  <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="signup-email" name="signup-email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="signup-password" name="signup-password" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Sign Up">
+                  </div>
+                </form>
+                <div class="toggle-btn" id="toggle-btn" onclick="toggleForm()">
+                  Already have an account? Log In
+                </div>
+              </div>
+             
+</body>
+</html>
+
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBPetoyH5_7XDCCku8z5O8H-xBCVRLuTmg",
+      authDomain: "website01-8c304.firebaseapp.com",
+      projectId: "website01-8c304",
+      storageBucket: "website01-8c304.appspot.com",
+      messagingSenderId: "447107941148",
+      appId: "1:447107941148:web:5192316ffbe2c4b5a630d9",
+      measurementId: "G-H8EPGEQHL9"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+
+    //signup
+    const signupForm = document.getElementById("signup-form");
+    signupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user);
+          alert("Account created successfully");
+          loginForm.style.display = "block";
+          signupForm.style.display = "none";
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+          // ..
+        });
+    });
+
+    //login
+    const loginForm = document.getElementById("login-form");
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+        //   redirect to index.html
+            
+            window.location.href = "index.html";
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+          alert("Invalid email or password");
+        });
+    });
+
+
+    //auth state change
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        console.log(uid);
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+    </script>
